@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="POS_system_myowndesign.Views.UserControls.LeftSideBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS_system_myowndesign.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="644" d:DesignWidth="160">
+    <UserControl.Resources>
+        <Style x:Key="SearchButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="47"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#5d5e5c"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Grid.Column="0" Grid.Row="1" Background="#F5F5F5">
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Home"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Tables"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Cashier"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Orders"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Reports"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Settings"/>
+            <StackPanel Margin="0,120,0,0">
+                <Button Style="{StaticResource SearchButtonStyle}" Content="CashierName"/>
+                <Button Style="{StaticResource SearchButtonStyle}" Content="➜]Logout"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

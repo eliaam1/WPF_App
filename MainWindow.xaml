@@ -1,0 +1,88 @@
+﻿<Window x:Class="POS_system_myowndesign.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POS_system_myowndesign"
+        xmlns:vm="clr-namespace:POS_system_myowndesign.ViewModels"
+        xmlns:views="clr-namespace:POS_system_myowndesign.Views"
+        xmlns:UserControls="clr-namespace:POS_system_myowndesign.Views.UserControls"
+        mc:Ignorable="d"
+        Title="Restaurant POS" Height="720" Width="1280" WindowState="Maximized">
+
+    <!-- Set the main ViewModel for the entire window -->
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <Style x:Key="SearchButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="47"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#5d5e5c"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style x:Key="HeaderButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#4d4d5c"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="73*"/>
+            <ColumnDefinition Width="727*"/>
+            <ColumnDefinition Width="279*"/>
+            <ColumnDefinition Width="41*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top Header Section -->
+        <UserControls:TopHeader Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+        <!-- Left Navigation Panel -->
+        <UserControls:LeftSideBar Grid.Column="0" Grid.Row="1" />
+
+        <!-- Main Content Area (Products) -->
+        <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <UserControls:ProductTypesBar Margin="5"/>
+
+            <UserControls:ProductsScrollView Grid.Row="2"/>
+        </Grid>
+
+        <!-- Right Cart Sidebar -->
+        <Border Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" BorderBrush="LightGray" BorderThickness="1" Background="WhiteSmoke" Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Content="Select Table" Background="LightBlue" Margin="5" Height="56" Style="{StaticResource SearchButtonStyle}" HorizontalAlignment="Stretch"/>
+
+                <UserControls:RightSideBar Grid.Row="1" BorderThickness="1" BorderBrush="LightGray"/>
+
+                <UserControls:InvoiceBottomBar Grid.Row="2"/>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
