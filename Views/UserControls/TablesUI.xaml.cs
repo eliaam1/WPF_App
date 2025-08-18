@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace POS_system_myowndesign.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for ProductTypesBar.xaml
+    /// Interaction logic for TablesUI.xaml
     /// </summary>
-    public partial class ProductTypesBar : UserControl
+    public partial class TablesUI : UserControl
     {
-        public ProductTypesBar()
+        public TablesUI()
         {
             InitializeComponent();
         }
-
     }
 }

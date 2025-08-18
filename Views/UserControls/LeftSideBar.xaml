@@ -21,11 +21,10 @@
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#F5F5F5">
             <Button Style="{StaticResource SearchButtonStyle}" Content="Home"/>
             <Button Style="{StaticResource SearchButtonStyle}" Content="Tables"/>
-            <Button Style="{StaticResource SearchButtonStyle}" Content="Cashier"/>
             <Button Style="{StaticResource SearchButtonStyle}" Content="Orders"/>
             <Button Style="{StaticResource SearchButtonStyle}" Content="Reports"/>
             <Button Style="{StaticResource SearchButtonStyle}" Content="Settings"/>
-            <StackPanel Margin="0,120,0,0">
+            <StackPanel Margin="0,250,0,0">
                 <Button Style="{StaticResource SearchButtonStyle}" Content="CashierName"/>
                 <Button Style="{StaticResource SearchButtonStyle}" Content="➜]Logout"/>
             </StackPanel>

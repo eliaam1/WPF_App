@@ -13,8 +13,15 @@
             Background="White"
             Padding="5">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
-            <TextBlock Text="{Binding Price, StringFormat=C}" Foreground="Green" FontSize="12" TextAlignment="Center"/>
+            <!-- Bind directly to the current product -->
+            <TextBlock Text="{Binding Name}" 
+                       FontWeight="Bold" 
+                       FontSize="14" 
+                       TextAlignment="Center"/>
+            <TextBlock Text="{Binding Price, StringFormat=C}" 
+                       Foreground="Green" 
+                       FontSize="12" 
+                       TextAlignment="Center"/>
         </StackPanel>
     </Button>
 </UserControl>

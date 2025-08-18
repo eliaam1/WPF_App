@@ -19,12 +19,107 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="Starters" Style="{StaticResource HeaderButtonStyle}" Content="Starters"/>
-            <Button x:Name="Breakfast" Style="{StaticResource HeaderButtonStyle}" Content="Breakfast"/>
-            <Button x:Name="Lunch" Style="{StaticResource HeaderButtonStyle}" Content="Lunch"/>
-            <Button x:Name="Supper" Style="{StaticResource HeaderButtonStyle}" Content="Supper"/>
-            <Button x:Name="Deserts" Style="{StaticResource HeaderButtonStyle}" Content="Deserts"/>
-            <Button x:Name="Beverages" Style="{StaticResource HeaderButtonStyle}" Content="Beverages"/>
+            <!-- Starters Button -->
+            <Button Command="{Binding FilterByTypeCommand}" 
+                    CommandParameter="Starters"
+                    Content="Starters">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource HeaderButtonStyle}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedType}" Value="Starters">
+                                <Setter Property="Background" Value="#FF4CAF50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Breakfast Button -->
+            <Button Command="{Binding FilterByTypeCommand}" 
+                    CommandParameter="Breakfast"
+                    Content="Breakfast">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource HeaderButtonStyle}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedType}" Value="Breakfast">
+                                <Setter Property="Background" Value="#FF4CAF50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Lunch Button -->
+            <Button Command="{Binding FilterByTypeCommand}" 
+                    CommandParameter="Lunch"
+                    Content="Lunch">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource HeaderButtonStyle}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedType}" Value="Lunch">
+                                <Setter Property="Background" Value="#FF4CAF50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Supper Button -->
+            <Button Command="{Binding FilterByTypeCommand}" 
+                    CommandParameter="Supper"
+                    Content="Supper">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource HeaderButtonStyle}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedType}" Value="Supper">
+                                <Setter Property="Background" Value="#FF4CAF50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Desserts Button -->
+            <Button Command="{Binding FilterByTypeCommand}" 
+                    CommandParameter="Desserts"
+                    Content="Desserts">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource HeaderButtonStyle}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedType}" Value="Desserts">
+                                <Setter Property="Background" Value="#FF4CAF50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <!-- Beverages Button -->
+            <Button Command="{Binding FilterByTypeCommand}" 
+                    CommandParameter="Beverages"
+                    Content="Beverages">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource HeaderButtonStyle}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedType}" Value="Beverages">
+                                <Setter Property="Background" Value="#FF4CAF50"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
