@@ -10,10 +10,7 @@
         mc:Ignorable="d"
         Title="Restaurant POS" Height="720" Width="1280" WindowState="Maximized">
 
-    <!-- Set the main ViewModel for the entire window -->
-    <Window.DataContext>
-        <vm:MainViewModel />
-    </Window.DataContext>
+    <!-- Remove the DataContext setting since we're using code-behind -->
 
     <Window.Resources>
         <Style x:Key="SearchButtonStyle" TargetType="Button">
@@ -64,7 +61,13 @@
 
             <UserControls:ProductTypesBar Margin="5"/>
 
-            <UserControls:ProductsScrollView Grid.Row="2"/>
+            <!-- Add x:Name to the ProductsScrollView -->
+            <UserControls:ProductsScrollView x:Name="ProductsScrollViewControl" Grid.Row="1"/>
+
+            <!-- Add other views that will be shown/hidden -->
+            <UserControls:TablesView x:Name="TablesViewControl" Grid.Row="1" Visibility="Collapsed"/>
+            <UserControls:OrdersView x:Name="OrdersViewControl" Grid.Row="1" Visibility="Collapsed"/>
+            <UserControls:ReportsView x:Name="ReportsViewControl" Grid.Row="1" Visibility="Collapsed"/>
         </Grid>
 
         <!-- Right Cart Sidebar -->
@@ -81,7 +84,6 @@
                 <UserControls:RightSideBar Grid.Row="1" BorderThickness="1" BorderBrush="LightGray"/>
 
                 <UserControls:InvoiceBottomBar Grid.Row="2"/>
-
             </Grid>
         </Border>
     </Grid>
