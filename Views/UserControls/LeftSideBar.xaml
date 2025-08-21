@@ -16,18 +16,20 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="BorderThickness" Value="0"/>
         </Style>
+        <Style x:Key="ActiveButtonStyle" TargetType="Button" BasedOn="{StaticResource SearchButtonStyle}">
+            <Setter Property="Background" Value="#2496ff"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <StackPanel Grid.Column="0" Grid.Row="1" Background="#F5F5F5">
-            <Button Style="{StaticResource SearchButtonStyle}" Content="Home"/>
-            <Button Style="{StaticResource SearchButtonStyle}" Content="Tables"/>
-            <Button Style="{StaticResource SearchButtonStyle}" Content="Cashier"/>
-            <Button Style="{StaticResource SearchButtonStyle}" Content="Orders"/>
-            <Button Style="{StaticResource SearchButtonStyle}" Content="Reports"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Home" x:Name="HomeBtn" Click="HomeBtn_Click"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Tables" x:Name="TablesBtn" Click="TablesBtn_Click"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Orders" x:Name="OrdersBtn" Click="OrdersBtn_Click"/>
+            <Button Style="{StaticResource SearchButtonStyle}" Content="Reports" x:Name="ReportsBtn" Click="ReportsBtn_Click"/>
             <Button Style="{StaticResource SearchButtonStyle}" Content="Settings"/>
-            <StackPanel Margin="0,120,0,0">
-                <Button Style="{StaticResource SearchButtonStyle}" Content="CashierName"/>
-                <Button Style="{StaticResource SearchButtonStyle}" Content="➜]Logout"/>
+            <StackPanel Margin="0,270,0,0">
+                <Button Style="{StaticResource SearchButtonStyle}" Content="➜]Logout" x:Name="logoutBtn" Click="logoutBtn_Click"/>
             </StackPanel>
         </StackPanel>
 

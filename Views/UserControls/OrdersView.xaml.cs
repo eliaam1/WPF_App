@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace POS_system_myowndesign.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for ProductTypesBar.xaml
+    /// Interaction logic for OrdersView.xaml
     /// </summary>
-    public partial class ProductTypesBar : UserControl
+    public partial class OrdersView : UserControl
     {
-        public ProductTypesBar()
+        public OrdersView()
         {
             InitializeComponent();
         }
-
     }
 }

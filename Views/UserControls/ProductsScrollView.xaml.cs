@@ -24,5 +24,7 @@ namespace POS_system_myowndesign.Views.UserControls
         {
             InitializeComponent();
         }
+
+
     }
 }

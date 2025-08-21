@@ -8,5 +8,6 @@ namespace POS_system_myowndesign.Views
         {
             InitializeComponent();
         }
+
     }
 }

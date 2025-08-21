@@ -1,11 +1,10 @@
 ﻿using POS_system_myowndesign.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using System.ComponentModel;
+using System.Windows.Data;
 using System.Windows;
 
 namespace POS_system_myowndesign.ViewModels
@@ -15,9 +14,36 @@ namespace POS_system_myowndesign.ViewModels
         private const decimal TaxRate = 0.15m; // 15% Tax
 
         // --- Properties for Data Binding ---
-
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<OrderItem> Cart { get; set; }
+
+        // Filtering properties
+        private ObservableCollection<Product> _allProducts;
+        private ICollectionView _filteredProducts;
+        private string _currentFilter;
+        public ICommand FilterByTypeCommand { get; }
+
+        private string _selectedType;
+        public string SelectedType
+        {
+            get => _selectedType;
+            set
+            {
+                _selectedType = value;
+                OnPropertyChanged(nameof(SelectedType));
+            }
+        }
+
+
+        public ICollectionView FilteredProducts
+        {
+            get => _filteredProducts;
+            set
+            {
+                _filteredProducts = value;
+                OnPropertyChanged(nameof(FilteredProducts));
+            }
+        }
 
         private decimal _subTotal;
         public decimal SubTotal
@@ -48,21 +74,29 @@ namespace POS_system_myowndesign.ViewModels
         }
 
         // --- Commands for Buttons ---
-
         public ICommand AddToCartCommand { get; }
         public ICommand DecrementItemCommand { get; }
         public ICommand ApplyDiscountCommand { get; }
         public ICommand CompleteOrderCommand { get; }
 
         // --- Constructor ---
-
         public MainViewModel()
         {
             // Initialize collections
-            Products = new ObservableCollection<Product>(ProductSamples.GetProducts());
+            _allProducts = new ObservableCollection<Product>(ProductSamples.GetProducts());
+            Products = new ObservableCollection<Product>(_allProducts); // Keep original reference if needed
             Cart = new ObservableCollection<OrderItem>();
 
+            // Initialize Filtered Collection
+            FilteredProducts = CollectionViewSource.GetDefaultView(_allProducts);
+            FilteredProducts.Filter = item =>
+            {
+                if (string.IsNullOrEmpty(_currentFilter)) return true;
+                return ((Product)item).Type.Equals(_currentFilter, StringComparison.OrdinalIgnoreCase);
+            };
+
             // Initialize Commands
+            FilterByTypeCommand = new RelayCommand(ExecuteFilterByType);
             AddToCartCommand = new RelayCommand(AddToCart);
             DecrementItemCommand = new RelayCommand(DecrementItem);
             ApplyDiscountCommand = new RelayCommand(UpdateTotals);
@@ -70,7 +104,6 @@ namespace POS_system_myowndesign.ViewModels
         }
 
         // --- Command Methods ---
-
         private void AddToCart(object parameter)
         {
             if (parameter is Product product)
@@ -119,6 +152,13 @@ namespace POS_system_myowndesign.ViewModels
             decimal discountedSubTotal = SubTotal - discountAmount;
             Tax = discountedSubTotal * TaxRate;
             TotalPayable = discountedSubTotal + Tax;
+        }
+
+        private void ExecuteFilterByType(object parameter)
+        {
+            _currentFilter = parameter as string;
+            SelectedType = _currentFilter;
+            FilteredProducts.Refresh();
         }
     }
 }
